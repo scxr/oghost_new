@@ -35,16 +35,16 @@ def login():
         if i in data.keys():
             pass
         else:
-            return jsonify({"error":f"you are missing {i}"}) 
+            return render_template("login.html", error=f"you are missing {i}")
     
     user=User.query.filter_by(username=data["username"]).first()
     if user is None:
-        return {"error":"user does not exist"}
+        return render_template("login.html", error="incorrect password")
     else:
         if user.password == data["password"]:
             pass
         else:
-            return {"error":"incorrect password"}
+            return render_template("login.html", error="incorrect password")
     access_token = create_access_token(identity=data["username"])
     refresh_token = create_refresh_token(identity=data["username"])
     resp = make_response(redirect(url_for('dashboard')))
