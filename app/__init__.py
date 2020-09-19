@@ -9,4 +9,6 @@ app.config.from_object(settings.Config)
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
 
-from app.main import admin, index, links, login, logs
+from app.main.admin import admin, index, links, login, logs
+from app.main.ig import index
+from app.main.ig.login import index

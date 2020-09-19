@@ -7,7 +7,6 @@ class User(db.Model):
 
 class Phish(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    refferer = db.Column(db.String)
     platform = db.Column(db.String)
     phised_user = db.Column(db.String)
     phished_pword = db.Column(db.String)

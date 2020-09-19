@@ -9,13 +9,3 @@ for i in range(0,100):
                 ip='127.0.0.1')
     db.session.add(new)
     db.session.commit()
-'''
-class Phish(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    refferer = db.Column(db.String)
-    platform = db.Column(db.String)
-    phised_user = db.Column(db.String)
-    phished_pword = db.Column(db.String)
-    ip = db.Column(db.String)
-    
-'''
