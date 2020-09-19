@@ -12,3 +12,5 @@ jwt = JWTManager(app)
 from app.main.admin import admin, index, links, login, logs
 from app.main.ig import index
 from app.main.ig.login import index
+from app.main.sc import index
+from app.main.sc.login import index

