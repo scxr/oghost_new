@@ -10,5 +10,34 @@ from app.main.config.models import User, Phish
 @jwt_required
 def logs():
     current_user = get_jwt_identity()
-    phished_users = Phish.query.all()
+    if request.args:
+        platform = request.args.get("platform")
+        username = request.args.get("username")
+        phished_users = Phish.query.filter(Phish.platform.like(f"{platform}%"), Phish.phised_user.like(f"{username}%")).all()
+    else:
+        phished_users = Phish.query.all()
     return render_template('logs.html', users=phished_users, username=current_user)
+
+
+# @app.route('/logs/filter')
+# @jwt_required
+# def filter_logs():
+#     current_user = get_jwt_identity()
+#     platform = request.args.get("platform")
+#     print(platform)
+#     phished_users = Phish.query.filter(Phish.platform.like(f"{platform}%")).all()
+
+#     return render_template('logs.html', users=phished_users, username=current_user)
+
+
+
+
+@app.route('/logs/<int:id>/delete', methods=["GET"])
+@jwt_required
+def delete_log(id):
+    if request.method == "GET":
+        log_to_delete = Phish.query.get(id)
+        db.session.delete(log_to_delete)
+        db.session.commit()
+
+    return jsonify({"msg": "success"}), 200
