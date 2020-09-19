@@ -39,7 +39,7 @@ def login():
     
     user=User.query.filter_by(username=data["username"]).first()
     if user is None:
-        return render_template("login.html", error="incorrect password")
+        return render_template("login.html", error="user does not exist")
     else:
         if user.password == data["password"]:
             pass
