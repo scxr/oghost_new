@@ -5,12 +5,14 @@ from flask_jwt_extended import (
     create_refresh_token, get_jwt_identity, set_access_cookies, set_refresh_cookies
 )
 from app.main.config.models import User, Phish
+from app.main.admin.admin import admin_required
 
 from base64 import b64encode
 
 
 @app.route('/dashboard')
 @jwt_required
+@admin_required
 def dashboard():
     current_user = get_jwt_identity()
     

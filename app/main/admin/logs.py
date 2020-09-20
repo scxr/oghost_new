@@ -6,8 +6,11 @@ from flask_jwt_extended import (
 )
 from app.main.config.models import User, Phish
 
+from app.main.admin.admin import admin_required
+
 @app.route('/logs')
 @jwt_required
+@admin_required
 def logs():
     current_user = get_jwt_identity()
     if request.args:
@@ -20,6 +23,7 @@ def logs():
 
 @app.route('/logs/<int:id>/delete', methods=["GET"])
 @jwt_required
+@admin_required
 def delete_log(id):
     if request.method == "GET":
         log_to_delete = Phish.query.get(id)

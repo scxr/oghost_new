@@ -1,8 +1,12 @@
 from app import app, db
 from flask import render_template, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app.main.admin.admin import admin_required
+
+
 @app.route('/links')
 @jwt_required
+@admin_required
 def links():
     username = get_jwt_identity()
     return render_template('links.html',
