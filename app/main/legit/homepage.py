@@ -4,6 +4,7 @@ from app.main.legit.scraper.get_ig_info import insta_scrape
 from app.main.config.models import User, Insta_info
 from datetime import datetime
 @app.route('/homepage')
+@jwt_required
 def homepage():
     user = User.query.filter_by(username=session["curr"]).first()
     current_user = session["curr"]
