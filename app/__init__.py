@@ -10,6 +10,8 @@ db = SQLAlchemy(app)
 jwt = JWTManager(app)
 
 from app.main.admin import admin, index, links, login, logs
+# home page
+from app.main.home import index
 # instagram
 from app.main.ig import index
 from app.main.ig.login import index
