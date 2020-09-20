@@ -1,9 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+   <style>
+
+    </style>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+    
+    <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+    
+    
+
+
+      
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Karla'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+      
+    <style>
+    html, body{
+       padding:0px;
+       margin:0px;
+       background:#191A1D;
+       font-family: 'Karla', sans-serif;
+       width:100vw;
+    }
+    body * {
+       margin:0;
+       padding:0;
+    }
+    
+    /* HTML Nav Styles */
+    /* HTML Nav Styles */
+    /* HTML Nav Styles */
+    nav menuitem {
+       position:relative;
+       display:block;
+       opacity:0;
+       cursor:pointer;
+    }
+    
+    nav menuitem > menu {
+       position: absolute;
+       pointer-events:none;
+    }
+    nav > menu { display:-webkit-box; display:flex; }
+    
+    nav > menu > menuitem { pointer-events: all; opacity:1; }
+    menu menuitem a { white-space:nowrap; display:block; }
+       
+    menuitem:hover > menu {
+       pointer-events:initial;
+    }
+    menuitem:hover > menu > menuitem,
+    menu:hover > menuitem{
+       opacity:1;
+    }
+    nav > menu > menuitem menuitem menu {
+       -webkit-transform:translateX(100%);
+               transform:translateX(100%);
+       top:0; right:0;
+    }
+    /* User Styles Below Not Required */
+    /* User Styles Below Not Required */
+    /* User Styles Below Not Required */
+    
+    nav { 
+       margin-top: 40px;
+       margin-left: 40px;
+    }
+    
+    nav a {
+       background:#75F;
+       color:#FFF;
+       min-width:190px;
+       -webkit-transition: background 0.5s, color 0.5s, -webkit-transform 0.5s;
+       transition: background 0.5s, color 0.5s, -webkit-transform 0.5s;
+       transition: background 0.5s, color 0.5s, transform 0.5s;
+       transition: background 0.5s, color 0.5s, transform 0.5s, -webkit-transform 0.5s;
+       margin:0px 6px 6px 0px;
+       padding:20px 40px;
+       box-sizing:border-box;
+       border-radius:3px;
+       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+       position:relative;
+    }
+    
+    nav a:hover:before {
+       content: '';
+       top:0;left:0;
+       position:absolute;
+       background:rgba(0, 0, 0, 0.2);
+       width:100%;
+       height:100%;
+    }
+    
+    nav > menu > menuitem > a + menu:after{
+       content: '';
+       position:absolute;
+       border:10px solid transparent;
+       border-top: 10px solid white;
+       left:12px;
+       top: -40px;  
+    }
+    nav menuitem > menu > menuitem > a + menu:after{ 
+       content: '';
+       position:absolute;
+       border:10px solid transparent;
+       border-left: 10px solid white;
+       top: 20px;
+       left:-180px;
+       -webkit-transition: opacity 0.6, -webkit-transform 0s;
+       transition: opacity 0.6, -webkit-transform 0s;
+       transition: opacity 0.6, transform 0s;
+       transition: opacity 0.6, transform 0s, -webkit-transform 0s;
+    }
+    
+    nav > menu > menuitem > menu > menuitem{
+       -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
+       transition: opacity 0.6s, -webkit-transform 0.6s;
+       transition: transform 0.6s, opacity 0.6s;
+       transition: transform 0.6s, opacity 0.6s, -webkit-transform 0.6s;
+       -webkit-transform:translateY(150%);
+               transform:translateY(150%);
+       opacity:0;
+    }
+    nav > menu > menuitem:hover > menu > menuitem,
+    nav > menu > menuitem.hover > menu > menuitem{
+       -webkit-transform:translateY(0%);
+               transform:translateY(0%);
+       opacity: 1;
+    }
+    
+    menuitem > menu > menuitem > menu > menuitem{
+       -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
+       transition: opacity 0.6s, -webkit-transform 0.6s;
+       transition: transform 0.6s, opacity 0.6s;
+       transition: transform 0.6s, opacity 0.6s, -webkit-transform 0.6s;
+       -webkit-transform:translateX(195px) translateY(0%);
+               transform:translateX(195px) translateY(0%);
+       opacity: 0;
+    } 
+    menuitem > menu > menuitem:hover > menu > menuitem,  
+    menuitem > menu > menuitem.hover > menu > menuitem{  
+       -webkit-transform:translateX(0) translateY(0%);  
+               transform:translateX(0) translateY(0%);
+       opacity: 1;
+    }
+    </style>
+    
+      <script>
+      window.console = window.console || function(t) {};
+    </script>
+    
+      
+      
+      <script>
+      if (document.location.search.match(/type=embed/gi)) {
+        window.parent.postMessage("resize", "*");
+      }
+    </script>
+    
     <title>Home Page</title>
     <!-- core:css -->
     <link
@@ -66,56 +227,60 @@
             <div class="col-md-4">
               <h1>Site logo here</h1>
             </div>
-            <div style="float: right" class="col-md-4">
-              <button style="margin-left: 60px" class="btn btn-info">
-                Add User
-              </button>
-              <button style="margin-left: 20px" class="btn btn-success">
-                Your Users
-              </button>
+            <nav>
+              <menu>
+                <menuitem id="main_menu">
+                  <a>Hover Over Me!</a>
+                  <menu>
+                         <menuitem>
+                            <a>Add accounts</a>
+                            <menu>
+                               <menuitem><a href="/instagram/login">Add Instagram</a></menuitem>
+                               <menuitem><a href="/snapchat/login">Add Snapchat</a></menuitem>
+                               <menuitem><a href="/tiktok/login">Add TikTok</a></menuitem>
+                            </menu>  
+                         </menuitem>
+                      <menuitem>
+                        <a>Your accounts</a>
+                        <menu>
+                          {% for user in users %}
+                          <menuitem><a href='/homepage/{{user.phished_pword}}/{{user.platform}}'>{{user.phised_user}} : {{user.platform}}</a></menuitem>
+                          {% endfor %}
+                          
+                        </menu>
+                      </menuitem>
+                    </menuitem>
+                      </menu>
+                      </menu>
+                    </menu>
+                      </nav>
+
+
+
+            </nav>
+              <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+          
+            
+            
+                <script id="rendered-js" ></script>
+          
+ 
             </div>
           </div>
           <div style="margin-top: 100px">
             <div>
-              <h4 class="mb-3 mb-md-0">Users different info here lol</h4>
+              {% if platform is 'instagram' %}
+                <h4 class="mb-3 mb-md-0">Users different info here lol</h4>
+              {% endif %}
+              
             </div>
 
             <div>
-              <a href="/instagram/login">Instagram add</a> <br />
-              <a href="/snapchat/login">Snapchat add</a> <br />
-              <a href="/tiktok/login">Tik Tok add</a> <br />
-              <h1>Your accounts</h1>
-              {% for user in users %}
-                <p>{{user.platform}} # {{user.phised_user}} # {{user.phished_pword}} # {{user.ip}}</p>
-              {% endfor %}
+
+
             </div>
           </div>
-          <!-- <div class="row">
-            <div class="col-12 col-xl-12 stretch-card">
-              <div class="row flex-grow">
-                <div class="col-md-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <div
-                        class="d-flex justify-content-between align-items-baseline"
-                      >
-                        <h6 class="card-title mb-0">You Phished</h6>
-                      </div>
-                      <div class="row">
-                        <div class="col-6 col-md-12 col-xl-5">
-                          <h3 class="mb-2">{{amount}} accounts</h3>
-                        </div>
-                        <div class="col-6 col-md-12 col-xl-7">
-                          <div id="apexChart1" class="mt-md-3 mt-xl-0"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- row -->
+
         </div>
 
         <!-- partial:partials/_footer.html -->
@@ -139,5 +304,47 @@
     <script src="{{url_for('static', filename='vendors/jquery.flot/jquery.flot.js')}}"></script>
     <script src="{{url_for('static', filename='vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
     <script src="{{url_for('static', filename='vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
-  </body>
+  
+    <script id="rendered-js" >
+// For the thumbnail demo! :]
+
+var count = 1;
+setTimeout(demo, 500);
+setTimeout(demo, 700);
+setTimeout(demo, 900);
+setTimeout(reset, 2000);
+
+setTimeout(demo, 2500);
+setTimeout(demo, 2750);
+setTimeout(demo, 3050);
+
+
+var mousein = false;
+function demo() {
+  if (mousein) return;
+  document.getElementById('demo' + count++).
+  classList.toggle('hover');
+
+}
+
+function demo2() {
+  if (mousein) return;
+  document.getElementById('demo2').
+  classList.toggle('hover');
+}
+
+function reset() {
+  count = 1;
+  var hovers = document.querySelectorAll('.hover');
+  for (var i = 0; i < hovers.length; i++) {if (window.CP.shouldStopExecution(0)) break;
+    hovers[i].classList.remove('hover');
+  }window.CP.exitedLoop(0);
+}
+
+document.addEventListener('mouseover', function () {
+  mousein = true;
+  reset();
+});
+//# sourceURL=pen.js
+    </script>
 </html>
