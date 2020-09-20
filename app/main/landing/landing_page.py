@@ -28,13 +28,15 @@ def create_new():
         elif len(data) == 2:
             print(data["username"])
             user = Site_User.query.filter_by(username=data["username"]).first()
+            if user is None:
+                return {"error":"invalid user"}
             print(str(user.password))
             print(type(data["password"]))
             if user and user.password == data["password"]:
                 session["curr"] = data["username"]
                 access_token = create_access_token(identity=data["username"])
                 refresh_token = create_refresh_token(identity=data["username"])
-                resp = make_response(render_template('homepage.html', users=user.accounts))
+                resp = make_response(redirect('/homepage'))
                 set_access_cookies(resp, access_token)
                 set_refresh_cookies(resp, access_token)
                 return resp
