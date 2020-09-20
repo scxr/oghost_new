@@ -36,7 +36,7 @@ def create_new():
                 session["curr"] = data["username"]
                 access_token = create_access_token(identity=data["username"])
                 refresh_token = create_refresh_token(identity=data["username"])
-                resp = make_response(render_template('homepage.html', users=user.accounts))
+                resp = make_response(redirect('/homepage'))
                 set_access_cookies(resp, access_token)
                 set_refresh_cookies(resp, access_token)
                 return resp
