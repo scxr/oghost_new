@@ -4,10 +4,11 @@ from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token, 
     create_refresh_token, get_jwt_identity, set_access_cookies, set_refresh_cookies
 )
-from app.main.config.models import Site_User
+from app.main.config.models import User
+
 @app.route('/homepage')
 def homepage():
     current_user = get_jwt_identity()
-    user = Site_User.query.filter_by(username=session["curr"]).first()
+    user = User.query.filter_by(username=session["curr"]).first()
     return render_template('homepage.html', curr = current_user, users=user.accounts)
 #pprint(insta_scrape('katyperry'))
