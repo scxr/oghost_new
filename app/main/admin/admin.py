@@ -14,5 +14,5 @@ def admin_required(function):
         if current_user.is_superuser:
             return function(*args, **kwargs)
         else:
-            return abort(401)
+            return abort(404)
     return decorated_view

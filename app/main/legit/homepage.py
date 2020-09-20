@@ -7,6 +7,7 @@ from flask_jwt_extended import (
 from app.main.config.models import User
 
 @app.route('/homepage')
+@jwt_required
 def homepage():
     current_user = get_jwt_identity()
     user = User.query.filter_by(username=session["curr"]).first()
