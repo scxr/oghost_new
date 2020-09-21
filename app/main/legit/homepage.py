@@ -1,7 +1,9 @@
 from flask import request, render_template, session
 from app import app, db
 from app.main.legit.scraper.get_ig_info import insta_scrape
-from app.main.config.models import User, Insta_info
+from app.main.legit.scraper.get_tt_info import tt_scrape
+from app.main.legit.scraper.get_sc_info import snap_scrape
+from app.main.config.models import User, Insta_info, Tiktok_info, Snapchat_info
 from datetime import datetime
 from flask_jwt_extended import jwt_required
 @app.route('/homepage')
@@ -58,6 +60,68 @@ def render_user(username, platform):
                                                         platform='instagram',
                                                         users=user.accounts,
                                                         bio=bio)
+
+
+    elif platform.lower() == "tiktok":
+        now = datetime.utcnow()
+        profile = Tiktok_info.query.filter_by(username=username).first()
+        print(profile)
+
+        if profile is not None:
+            print('db')
+            diff = profile.searched_last - now
+            if diff.days > 0:
+                pass
+            else:
+                print("ok ntek")
+
+                return render_template('homepage.html', users=user.accounts,
+                                            curr=current_user, 
+                                            profile=profile,
+                                            username=username,
+                                            platform='tiktok')
+
+        tt_info = tt_scrape(username)
+        profile = Tiktok_info(**tt_info)
+
+        db.session.add(profile)
+        db.session.commit()
+        db.session.refresh(profile)
+        return render_template('homepage.html', curr=current_user,
+                                            users=user.accounts,
+                                            profile=profile,
+                                            username=username,
+                                            platform="tiktok")
+
+    elif platform.lower() == "snapchat":
+        now = datetime.utcnow()
+        profile = Snapchat_info.query.filter_by(username=username).first()
+        print(profile)
+
+        if profile is not None:
+            diff = profile.searched_last - now
+            if diff.days > 0:
+                pass
+            else:
+                return render_template('homepage.html', users=user.accounts,
+                            curr=current_user, 
+                            profile=profile,
+                            username=username,
+                            platform='snapchat') 
+
+        sc_info = snap_scrape(username)
+        print(sc_info)
+        profile = Snapchat_info(username=username, exists=sc_info)
+
+        db.session.add(profile)
+        db.session.commit()
+        db.session.refresh(profile)
+        return render_template('homepage.html', curr=current_user,
+                                    users=user.accounts,
+                                    profile=profile,
+                                    username=username,
+                                    platform="snapchat")
+
                                                     
     return render_template('homepage.html', curr=current_user, platform=platform)
 #pprint(insta_scrape('katyperry'))

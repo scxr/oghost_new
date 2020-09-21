@@ -22,19 +22,12 @@ def snap_scrape(username):
     sugestions = data.get("reference").get("suggestions")
 
     if status == "OK":
-        print("Username is available")
+        # print("Username is available")
+        return "User not valid"
     elif status == "TAKEN":
-        print("Username is unavailable")
-
-        if len(sugestions):
-            print("Available usernames")
-
-            for suggestion in sugestions:
-                print("  ", suggestion)
-        else:
-            print("Username suggestions are not available")
+        # print("Username is unavailable")
+        return "Success"
 
     elif status == "TOO_LONG":
-        print("Usernames cannot be longer than 15 character")
-
-snap_scrape('kfjdlksjf_sfsireurs_1')
+        # print("Usernames cannot be longer than 15 character")
+        return "User not valid"

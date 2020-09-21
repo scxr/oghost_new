@@ -2,11 +2,20 @@
 <head>
     <link rel="stylesheet" href="{{url_for('static', filename='css/homepage/homepage.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <style>
+    .center-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 40vh;
+    }
+  </style>
 </head>
 
 <body>
-    
+   <div class="">
     <div class="dropdown">
         <button class="dropbtn">Add user</button>
         <div class="dropdown-content">
@@ -25,13 +34,22 @@
       </div>
       <h1>Instalytics</h1>
       {% if platform == 'instagram' %}
-      <img src="{{pfp_url}}" alt="avi" style="width: 200px;"></im>
+      <img src="{{pfp_url}}" alt="avi" style="width: 200px;">
+      {% elif platform == 'tiktok' %}
+      <img src="{{profile.pfp_url}}" alt="avi" style="width: 100px;">
       {%else%}
       <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="avi" style="width: 200px;"></im>
 
       {% endif %}
-      <h3>User logged in : {{curr}}</h3>
-      <h2>Your statistics : </h2>
+      <div class="center-screen container">
+      <h3>User logged in : {{curr}} | {{username}}</h3>
+      {% if platform == 'instagram' %}
+        <h4>Bio : </h4>
+      {% elif platform == 'tiktok' %}
+        <h3>Nickname : {{profile.nickname}}</h3>
+        <h4>Bio : {{profile.desc}}</h4>
+      {% endif %}
+      <h2 style="margin-top: 30px;">Your statistics : </h2>
       {% if platform == 'instagram' %}
 	
       <div class="table">
@@ -51,8 +69,35 @@
     
         </div>	
       </div>
+      {% elif platform == 'tiktok' %}
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item"><a id="name" class="filter__link" href="#">Followers</a></div>
+          <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Following</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Heart</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">DiggCount</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">VideoCount</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">HeartCount</a></div>
+
+        </div>
+        <div class="table-content">	
+          <div class="table-row">		
+            <div class="table-data">{{profile.followerCount}}</div>
+            <div class="table-data">{{profile.followingCount}}</div>
+            <div class="table-data">{{profile.heart}}</div>
+            <div class="table-data">{{profile.diggCount}}</div>
+            <div class="table-data">{{profile.videoCount}}</div>
+            <div class="table-data">{{profile.heartCount}}</div>
+          </div>
+    
+        </div>	
+      </div> 
+      {% elif platform == 'snapchat' %}
+      <h3>{{profile.username}}</h3>
+      <h3>{{profile.exists}}</h3>
       {% endif %}
-      <div class="container">
+
+    </div>
 
 </div>
 

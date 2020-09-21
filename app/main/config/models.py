@@ -29,6 +29,22 @@ class Insta_info(db.Model):
     bio = db.Column(db.String)
     searched_last = db.Column(DateTime, default=datetime.utcnow())
 
+
+class Tiktok_info(db.Model):
+    __tablename__ = 'tt_info'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String)
+    nickname = db.Column(db.String)
+    diggCount = db.Column(db.String)
+    followerCount = db.Column(db.String)
+    followingCount = db.Column(db.String)
+    heart = db.Column(db.String)
+    videoCount = db.Column(db.String)
+    heartCount = db.Column(db.String)
+    desc = db.Column(db.String)
+    pfp_url = db.Column(db.String)
+    searched_last = db.Column(DateTime, default=datetime.utcnow())
+
 '''        insta_to_insert = Insta_info(followers=followers,
                                      posts=posts,
                                      engagement='',
@@ -39,7 +55,9 @@ class Insta_info(db.Model):
 '''
 class Snapchat_info(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String)
     exists = db.Column(db.String)
+    searched_last = db.Column(DateTime, default=datetime.utcnow())
     
 # class Site_User(db.Model):
 #     __tablename__ = "site_user"
