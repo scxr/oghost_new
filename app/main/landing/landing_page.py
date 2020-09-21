@@ -7,6 +7,11 @@ from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token, 
     create_refresh_token, get_jwt_identity, set_access_cookies, set_refresh_cookies
 )
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
 @app.route('/', methods=['GET'])
 def landing_page():
     if "curr" in session:

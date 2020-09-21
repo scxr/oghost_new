@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.getElementsByTagName("html")[0].className += " js";</script>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/faq.css')}}">
+  <title>FAQ </title>
+</head>
+<body>
+<header class="cd-header flex flex-column flex-center">
+  <div class="text-component text-center">
+    <h1>FAQ</h1>
+  </div>
+</header>
+<a href="/" class="button">Go Home</a>
+
+<section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg">
+	<ul class="cd-faq__categories">
+		<li><a class="cd-faq__category cd-faq__category-selected truncate" href="#basics">Basics</a></li>
+		<li><a class="cd-faq__category truncate" href="#error">Errors</a></li>
+		<li><a class="cd-faq__category truncate" href="#privacy">Privacy</a></li>
+	</ul> <!-- cd-faq__categories -->
+
+	<div class="cd-faq__items">
+		<ul id="basics" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Basics</h2></li>
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I join?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>You can simply go to <a href="/new_user">here</a> and signup, it really is that easy!</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I add an account?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Once you are logged in you will be able to see the "add user" button, simply hover over that and choose the kind of account you want to add.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Which accounts do you support?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>We currently support Snapchat (limited), Instagram and TikTok Though we do have plans to add some more later down the line</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+		</ul> <!-- cd-faq__group -->
+
+		<ul id="error" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Errors</h2></li>
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Statistic arent updating?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Due to restrictions put in place by the different sites we can only upadte each users statistics every 24 hours</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Saying invalid user login?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>We do not support 2fa accounts, if this isnt the issue please contact the team at instalytics@mail.com</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Its been 24 hours but no update?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>It is possible something on our backend doesnt work, please contact instalytics@mail.com.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+		</ul> <!-- cd-faq__group -->
+
+
+
+
+
+		<ul id="privacy" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Privacy</h2></li>
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Is my data secure?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Yes it is, all your data is secure and encrypted. We are a free service and do not sell your data.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>I think my account has been hacked</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>In this case we will reset your account for you, just email us at instalytics@mail.com</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+
+			</li>
+
+			</li>
+		</ul> <!-- cd-faq__group -->
+
+
+	</div> <!-- cd-faq__items -->
+
+	<a href="#0" class="cd-faq__close-panel text-replace">Close</a>
+  
+  <div class="cd-faq__overlay" aria-hidden="true"></div>
+</section> <!-- cd-faq -->
+<script src="{{url_for('static', filename='js/util.js')}}"></script> <!-- util functions included in the CodyHouse framework -->
+<script src="{{url_for('static', filename='js/main.js')}}"></script> 
+</body>
+</html>

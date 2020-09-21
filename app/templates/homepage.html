@@ -44,7 +44,7 @@
       <div class="center-screen container">
       <h3>User logged in : {{curr}} | {{username}}</h3>
       {% if platform == 'instagram' %}
-        <h4>Bio : </h4>
+        <h4>Bio : {{bio}}</h4>
       {% elif platform == 'tiktok' %}
         <h3>Nickname : {{profile.nickname}}</h3>
         <h4>Bio : {{profile.desc}}</h4>
