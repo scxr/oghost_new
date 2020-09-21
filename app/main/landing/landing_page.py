@@ -16,8 +16,7 @@ def landing_page():
 @app.route('/new_user', methods=['GET', 'POST'])
 def create_new():
     if request.method == 'GET':
-        if "curr" in session:
-            return redirect(url_for('homepage'))
+        
 
         if request.args:
             error = request.args.get("error")

