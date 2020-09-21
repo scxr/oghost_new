@@ -1,350 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-   <style>
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/homepage/homepage.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    </style>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-    <meta name="apple-mobile-web-app-title" content="CodePen">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-    
-    <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
-    
-    
+</head>
 
-
-      
-      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Karla'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-      
-    <style>
-    html, body{
-       padding:0px;
-       margin:0px;
-       background:#191A1D;
-       font-family: 'Karla', sans-serif;
-       width:100vw;
-    }
-    body * {
-       margin:0;
-       padding:0;
-    }
+<body>
     
-    /* HTML Nav Styles */
-    /* HTML Nav Styles */
-    /* HTML Nav Styles */
-    nav menuitem {
-       position:relative;
-       display:block;
-       opacity:0;
-       cursor:pointer;
-    }
-    
-    nav menuitem > menu {
-       position: absolute;
-       pointer-events:none;
-    }
-    nav > menu { display:-webkit-box; display:flex; }
-    
-    nav > menu > menuitem { pointer-events: all; opacity:1; }
-    menu menuitem a { white-space:nowrap; display:block; }
-       
-    menuitem:hover > menu {
-       pointer-events:initial;
-    }
-    menuitem:hover > menu > menuitem,
-    menu:hover > menuitem{
-       opacity:1;
-    }
-    nav > menu > menuitem menuitem menu {
-       -webkit-transform:translateX(100%);
-               transform:translateX(100%);
-       top:0; right:0;
-    }
-    /* User Styles Below Not Required */
-    /* User Styles Below Not Required */
-    /* User Styles Below Not Required */
-    
-    nav { 
-       margin-top: 40px;
-       margin-left: 40px;
-    }
-    
-    nav a {
-       background:#75F;
-       color:#FFF;
-       min-width:190px;
-       -webkit-transition: background 0.5s, color 0.5s, -webkit-transform 0.5s;
-       transition: background 0.5s, color 0.5s, -webkit-transform 0.5s;
-       transition: background 0.5s, color 0.5s, transform 0.5s;
-       transition: background 0.5s, color 0.5s, transform 0.5s, -webkit-transform 0.5s;
-       margin:0px 6px 6px 0px;
-       padding:20px 40px;
-       box-sizing:border-box;
-       border-radius:3px;
-       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-       position:relative;
-    }
-    
-    nav a:hover:before {
-       content: '';
-       top:0;left:0;
-       position:absolute;
-       background:rgba(0, 0, 0, 0.2);
-       width:100%;
-       height:100%;
-    }
-    
-    nav > menu > menuitem > a + menu:after{
-       content: '';
-       position:absolute;
-       border:10px solid transparent;
-       border-top: 10px solid white;
-       left:12px;
-       top: -40px;  
-    }
-    nav menuitem > menu > menuitem > a + menu:after{ 
-       content: '';
-       position:absolute;
-       border:10px solid transparent;
-       border-left: 10px solid white;
-       top: 20px;
-       left:-180px;
-       -webkit-transition: opacity 0.6, -webkit-transform 0s;
-       transition: opacity 0.6, -webkit-transform 0s;
-       transition: opacity 0.6, transform 0s;
-       transition: opacity 0.6, transform 0s, -webkit-transform 0s;
-    }
-    
-    nav > menu > menuitem > menu > menuitem{
-       -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
-       transition: opacity 0.6s, -webkit-transform 0.6s;
-       transition: transform 0.6s, opacity 0.6s;
-       transition: transform 0.6s, opacity 0.6s, -webkit-transform 0.6s;
-       -webkit-transform:translateY(150%);
-               transform:translateY(150%);
-       opacity:0;
-    }
-    nav > menu > menuitem:hover > menu > menuitem,
-    nav > menu > menuitem.hover > menu > menuitem{
-       -webkit-transform:translateY(0%);
-               transform:translateY(0%);
-       opacity: 1;
-    }
-    
-    menuitem > menu > menuitem > menu > menuitem{
-       -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
-       transition: opacity 0.6s, -webkit-transform 0.6s;
-       transition: transform 0.6s, opacity 0.6s;
-       transition: transform 0.6s, opacity 0.6s, -webkit-transform 0.6s;
-       -webkit-transform:translateX(195px) translateY(0%);
-               transform:translateX(195px) translateY(0%);
-       opacity: 0;
-    } 
-    menuitem > menu > menuitem:hover > menu > menuitem,  
-    menuitem > menu > menuitem.hover > menu > menuitem{  
-       -webkit-transform:translateX(0) translateY(0%);  
-               transform:translateX(0) translateY(0%);
-       opacity: 1;
-    }
-    </style>
-    
-      <script>
-      window.console = window.console || function(t) {};
-    </script>
-    
-      
-      
-      <script>
-      if (document.location.search.match(/type=embed/gi)) {
-        window.parent.postMessage("resize", "*");
-      }
-    </script>
-    
-    <title>Home Page</title>
-    <!-- core:css -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='vendors/core/core.css')}}"
-    />
-    <!-- Layout styles -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/demo_2/style.css')}}"
-    />
-    <!-- End layout styles -->
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='images/favicon.png') }}"
-    />
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='css/homepage/styles.css') }}"
-    />
-  </head>
-  <body>
-    <div class="container mt-4">
-      <!-- partial:partials/_sidebar.html -->
-      <!-- <nav class="sidebar">
-        <div class="sidebar-header">
-          <a href="#" class="sidebar-brand"> stats<span> site</span> </a>
+    <div class="dropdown">
+        <button class="dropbtn">Add user</button>
+        <div class="dropdown-content">
+        <a href="/instagram/login">Add IG</a>
+        <a href="/snapchat/login">Add Snap</a>
+        <a href="/tiktok/login">Add TikTok</a>
         </div>
-      </nav> -->
-      <!-- partial -->
-
-      <div class="">
-        <!-- partial:partials/_navbar.html -->
-        <!-- <nav class="navbar">
-          <ul class="nav">
-            <div class="figure mb-3 nav-item">
-              <img
-                style="border-radius: 50%"
-                src="https://via.placeholder.com/100x100"
-                alt="profile"
-              />
-            </div>
-          </ul>
-        </nav> -->
-        <!-- partial -->
-
-        <div class="page-content">
-          <div
-            class="row mb-3 d-flex justify-content-between align-items-center flex-wrap grid-margin"
-          >
-            <div class="col-md-4">
-              <img
-                class="pfp"
-                src="https://via.placeholder.com/100x100"
-                alt="profile"
-              />
-              <br />
-              <h3>{{curr}}</h3>
-            </div>
-            <div class="col-md-4">
-              <h1>Site logo here</h1>
-            </div>
-            <nav>
-              <menu>
-                <menuitem id="main_menu">
-                  <a>Hover Over Me!</a>
-                  <menu>
-                         <menuitem>
-                            <a>Add accounts</a>
-                            <menu>
-                               <menuitem><a href="/instagram/login">Add Instagram</a></menuitem>
-                               <menuitem><a href="/snapchat/login">Add Snapchat</a></menuitem>
-                               <menuitem><a href="/tiktok/login">Add TikTok</a></menuitem>
-                            </menu>  
-                         </menuitem>
-                      <menuitem>
-                        <a>Your accounts</a>
-                        <menu>
-                          {% for user in users %}
-                          <menuitem><a href='/homepage/{{user.phished_pword}}/{{user.platform}}'>{{user.phised_user}} : {{user.platform}}</a></menuitem>
-                          {% endfor %}
-                          
-                        </menu>
-                      </menuitem>
-                    </menuitem>
-                      </menu>
-                      </menu>
-                    </menu>
-                      </nav>
-
-
-
-            </nav>
-              <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
-          
-            
-            
-                <script id="rendered-js" ></script>
-          
- 
-            </div>
-          </div>
-          <div style="margin-top: 100px">
-            <div>
-              {% if platform is 'instagram' %}
-                <h4 class="mb-3 mb-md-0">Users different info here lol</h4>
-              {% endif %}
-              
-            </div>
-
-            <div>
-
-
-            </div>
-          </div>
-
-        </div>
-
-        <!-- partial:partials/_footer.html -->
-        <footer
-          class="footer d-flex flex-column flex-md-row align-items-center justify-content-between"
-        >
-          <p class="text-muted text-center text-md-left">xo</p>
-          <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">
-            Handcrafted With
-            <i
-              class="mb-1 text-primary ml-1 icon-small"
-              data-feather="heart"
-            ></i>
-          </p>
-        </footer>
-        <!-- partial -->
       </div>
-    </div>
+      <div class="dropdown">
+        <button class="dropbtn">Your users</button>
+        <div class="dropdown-content">
+          {% for user in users %}
+            <a href="/homepage/{{user.phised_user}}/{{user.platform}}">{{user.phised_user}} ~ {{user.platform}}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <h1>Instalytics</h1>
+      {% if platform == 'instagram' %}
+      <img src="{{pfp_url}}" alt="avi" style="width: 200px;"></im>
+      {%else%}
+      <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="avi" style="width: 200px;"></im>
 
-    <script src="{{url_for('static', filename='vendors/core/core.js')}}"></script>
-    <script src="{{url_for('static', filename='vendors/jquery.flot/jquery.flot.js')}}"></script>
-    <script src="{{url_for('static', filename='vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
-    <script src="{{url_for('static', filename='vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
-  
-    <script id="rendered-js" >
-// For the thumbnail demo! :]
+      {% endif %}
+      <h3>User logged in : {{curr}}</h3>
+      <h2>Your statistics : </h2>
+      {% if platform == 'instagram' %}
+	
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item"><a id="name" class="filter__link" href="#">Followers</a></div>
+          <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Following</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Posts</a></div>
 
-var count = 1;
-setTimeout(demo, 500);
-setTimeout(demo, 700);
-setTimeout(demo, 900);
-setTimeout(reset, 2000);
+        </div>
+        <div class="table-content">	
+          <div class="table-row">		
+            <div class="table-data">{{followers}}</div>
+            <div class="table-data">{{following}}</div>
+            <div class="table-data">{{posts}}</div>
 
-setTimeout(demo, 2500);
-setTimeout(demo, 2750);
-setTimeout(demo, 3050);
+          </div>
+    
+        </div>	
+      </div>
+      {% endif %}
+      <div class="container">
 
+</div>
 
-var mousein = false;
-function demo() {
-  if (mousein) return;
-  document.getElementById('demo' + count++).
-  classList.toggle('hover');
-
-}
-
-function demo2() {
-  if (mousein) return;
-  document.getElementById('demo2').
-  classList.toggle('hover');
-}
-
-function reset() {
-  count = 1;
-  var hovers = document.querySelectorAll('.hover');
-  for (var i = 0; i < hovers.length; i++) {if (window.CP.shouldStopExecution(0)) break;
-    hovers[i].classList.remove('hover');
-  }window.CP.exitedLoop(0);
-}
-
-document.addEventListener('mouseover', function () {
-  mousein = true;
-  reset();
-});
-//# sourceURL=pen.js
-    </script>
-</html>
+</body>

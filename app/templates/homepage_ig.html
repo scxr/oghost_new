@@ -1,0 +1,27 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage/homepage.css')}}">
+</head>
+<div id="login-container">
+    <div class="profile-img" style="background: url({{pfp_url}});"></div>
+    <h1>
+      {{username}}
+    </h1>
+    <div class="description">
+      {{bio}}
+    <br>
+    <br>
+      Followers : {{followers}}
+    </div>
+
+    <button onclick="location.href='/homepage'">Go back home</button>
+    <footer>
+      <div class="likes">
+        <p><i class='fa fa-heart'></i></p>
+        <p>Posts {{posts}}</p>
+      </div>
+      <div class="projects">
+        <p>Engagement</p>
+        <p>{{engagement}}</p>
+      </div>
+    </footer>
+  </div>

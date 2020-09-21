@@ -22,14 +22,21 @@ class Insta_info(db.Model):
     __tablename__ = 'ig_info'
     id = db.Column(db.Integer, primary_key=True)
     followers = db.Column(db.String)
+    following = db.Column(db.String)
     posts = db.Column(db.String)
-    engagement = db.Column(db.String)
     pfp_url = db.Column(db.String)
     username = db.Column(db.String)
+    bio = db.Column(db.String)
     searched_last = db.Column(DateTime, default=datetime.utcnow())
 
-
-
+'''        insta_to_insert = Insta_info(followers=followers,
+                                     posts=posts,
+                                     engagement='',
+                                     pfp_url=pfp_url,
+                                     username=username,
+                                     bio=bio,
+                                     following=following)
+'''
 class Snapchat_info(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exists = db.Column(db.String)
