@@ -17,7 +17,9 @@ def unauthorized_loader_handler(error):
 def unauthorized_loader_handler(error):
     return redirect('/new_user')
 
-
+@jwt.expired_token_loader
+def unauthorized_loader_handler(error):
+    return redirect('/new_user')
 from app.main.admin import admin, index, links, login, logs
 # instagram
 #from app.main.ig import index

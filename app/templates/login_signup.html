@@ -327,8 +327,13 @@
           <h1>Create Account</h1>
           <input type="text" placeholder="Username" name="username" />
           <input type="password" placeholder="Password" name="password" />
-          <input type="password" placeholder="Company Code" name="password_conf" />
+          <input type="text" placeholder="Company Code" name="code" />
           <button type="submit">Sign Up</button>
+          {% if error %}
+          <div style="margin-top: 40px" class="alert alert-danger" role="alert">
+            {{ error }}
+          </div>
+          {% endif %}
         </form>
       </div>
       <div class="form-container sign-in-container">

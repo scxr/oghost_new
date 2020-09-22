@@ -27,6 +27,7 @@ class Insta_info(db.Model):
     pfp_url = db.Column(db.String)
     username = db.Column(db.String)
     bio = db.Column(db.String)
+    engagement = db.Column(db.String)
     searched_last = db.Column(DateTime, default=datetime.utcnow())
 
 

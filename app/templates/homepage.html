@@ -19,7 +19,7 @@
     <div class="dropdown">
         <button class="dropbtn">Add user</button>
         <div class="dropdown-content">
-        <a href="/instagram/login">Add IG</a>
+        <a href="/instagram/login">Add Instagram</a>
         <a href="/snapchat/login">Add Snap</a>
         <a href="/tiktok/login">Add TikTok</a>
         </div>
@@ -41,22 +41,32 @@
       <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="avi" style="width: 200px;"></im>
 
       {% endif %}
+      {% if platform == 'instagram' %}
+      <h3>Verified analytics from Instagram</h3>
+      {% elif platform=='snapchat' %}
+      <h3>Verified analytics from Snapchat</h3>
+      {elif platform == 'tiktok'}
+      <h3>Verified analytics from TikTok</h3>
+      {% endif %}
       <div class="center-screen container">
       <h3>User logged in : {{curr}} | {{username}}</h3>
+      {%if shared == 'true' %}
+      <h2>Your details have been shared with your company code :   {{company}}</h2>
+      {% endif %}
       {% if platform == 'instagram' %}
         <h4>Bio : {{bio}}</h4>
       {% elif platform == 'tiktok' %}
         <h3>Nickname : {{profile.nickname}}</h3>
         <h4>Bio : {{profile.desc}}</h4>
       {% endif %}
-      <h2 style="margin-top: 30px;">Your statistics : </h2>
-      {% if platform == 'instagram' %}
-	
+      
+      {% if platform == 'instagram' %}  
       <div class="table">
         <div class="table-header">
           <div class="header__item"><a id="name" class="filter__link" href="#">Followers</a></div>
           <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Following</a></div>
           <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Posts</a></div>
+          <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Engagement</a></div>
 
         </div>
         <div class="table-content">	
@@ -64,6 +74,7 @@
             <div class="table-data">{{followers}}</div>
             <div class="table-data">{{following}}</div>
             <div class="table-data">{{posts}}</div>
+            <div class="table-data">{{engagement}}%</dib>
 
           </div>
     

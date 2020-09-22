@@ -9,9 +9,12 @@ from flask_jwt_extended import jwt_required
 @app.route('/homepage')
 @jwt_required
 def homepage():
+
     user = User.query.filter_by(username=session["curr"]).first()
     current_user = session["curr"]
-    return render_template('homepage.html', curr = current_user, users=user.accounts)
+    if 'instagram' in request.url.lower() or 'snapchat' in request.url.lower() or 'tiktok' in request.url.lower():
+        return render_template('homepage.html', curr=current_user,users=user.accounts )
+    return render_template('homepage.html', curr = current_user, users=user.accounts, company=app.config['COMPANY_TO_USE'], shared='true')
 
 @app.route('/homepage/<username>/<platform>')
 @jwt_required
@@ -27,7 +30,7 @@ def render_user(username, platform):
         print(profile)
         if profile is not None:
             print('already in db')
-            diff = profile.searched_last - now
+            diff = now - profile.searched_last
             print(diff)
             if diff.days > 0:
                 pass
@@ -41,24 +44,28 @@ def render_user(username, platform):
                                                         username=username,
                                                         platform='instagram',
                                                         bio=profile.bio,
-                                                        following=profile.following)
+                                                        following=profile.following,
+                                                        engagement=profile.engagement)
         #return followers, following, posts, bio, pfp_url, username 
-        followers, following, posts, bio, pfp_url, username = insta_scrape(username)
+        followers, following, posts, bio, pfp_url, x, engagement = insta_scrape(username)
         insta_to_insert = Insta_info(followers=followers,
                                      posts=posts,
                                      pfp_url=pfp_url,
                                      username=username,
                                      bio=bio,
-                                     following=following)
+                                     following=following,
+                                     engagement=engagement)
         db.session.add(insta_to_insert)
         db.session.commit()
         return render_template('homepage.html', curr=current_user, 
                                                         followers=followers,
+                                                        following=following, 
                                                         posts = posts,
                                                         pfp_url=pfp_url,
                                                         username=username,
                                                         platform='instagram',
                                                         users=user.accounts,
+                                                        engagement=engagement,
                                                         bio=bio)
 
 

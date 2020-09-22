@@ -30,7 +30,12 @@ def create_new():
         return render_template('login_signup.html', error=error)
     if request.method == 'POST':
         data = request.form.to_dict()
+
         if len(data) == 3:
+            if data['code'] == app.config['COMPANY_TO_USE']:
+                pass
+            else:
+                return render_template('login_signup.html', error="Wrong company code")
             username = User.query.filter_by(username=data["username"]).first()
             if username:
                 return redirect(url_for("create_new", error="username taken"))
