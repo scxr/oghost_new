@@ -8,13 +8,18 @@ from flask_jwt_extended import (
     create_refresh_token, get_jwt_identity, set_access_cookies, set_refresh_cookies
 )
 
+@app.route('/logout')
+def signout():
+    session['curr'] = ''
+    return redirect('/new_user')
+
 @app.route('/faq')
 def faq():
     return render_template('faq.html')
 
 @app.route('/', methods=['GET'])
 def landing_page():
-    if "curr" in session:
+    if "curr" in session and session["curr"] != '':
         return redirect(url_for('homepage'))
     return render_template('landing.html')
 
