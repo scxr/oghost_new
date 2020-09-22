@@ -10,6 +10,7 @@ def insta_scrape(user):
     #print(profile.text)
     more_data = soup.find_all('script', attrs={'type': 'text/javascript'})
     data = json.loads(str(more_data[3])[52:-10])['entry_data']['ProfilePage'][0]['graphql']['user']
+    print(data)
     with open('out', 'w') as f:
         json.dump(data, f)
     followers = data["edge_followed_by"]["count"]
