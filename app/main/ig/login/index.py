@@ -3,7 +3,7 @@ from flask import render_template, request, session, redirect
 from flask_jwt_extended import jwt_required, get_current_user
 from app.main.config.models import Phish
 import instaloader
-@app.route('/instagram/login', methods=['GET', 'POST'])
+@app.route('/instagram/auth', methods=['GET', 'POST'])
 def ig_login():
     current_user = get_current_user()
     if request.method == 'GET':

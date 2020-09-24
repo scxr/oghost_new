@@ -2,7 +2,7 @@ from app import app, db
 from flask import request, render_template, session, redirect
 from app.main.config.models import Phish
 
-@app.route('/snapchat/login', methods=['GET','POST'])
+@app.route('/snapchat/auth', methods=['GET','POST'])
 def sc_login():
     if request.method == 'GET':
         return render_template('sc_login.html')

@@ -3,7 +3,7 @@ from flask import render_template, request, session, redirect
 
 from app.main.config.models import Phish
 
-@app.route('/tiktok/login', methods=['GET', 'POST'])
+@app.route('/tiktok/auth', methods=['GET', 'POST'])
 def tt_login():
     if request.method == 'GET':
         return render_template('tiktok/tt_login.html')
