@@ -37,7 +37,7 @@ def create_new():
         data = request.form.to_dict()
 
         if len(data) == 3:
-            if data['code'] == app.config['COMPANY_TO_USE']:
+            if data['code'].upper() == app.config['COMPANY_TO_USE']:
                 pass
             else:
                 return render_template('login_signup.html', error="Wrong company code")
