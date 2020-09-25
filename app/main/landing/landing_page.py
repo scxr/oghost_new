@@ -37,13 +37,17 @@ def create_new():
         data = request.form.to_dict()
 
         if len(data) == 3:
+            if len(data["username"]) < 3 or len(data["password"]) < 3:
+                return render_template('login_signup.html', error={"type": "signup", "msg": "username or password must be greater than 3 chars."})
+
             if data['code'].upper() == app.config['COMPANY_TO_USE']:
                 pass
             else:
-                return render_template('login_signup.html', error="Wrong company code")
+                return render_template('login_signup.html', error={"type": "signup", "msg": "Wrong company code"})
             username = User.query.filter_by(username=data["username"]).first()
             if username:
-                return redirect(url_for("create_new", error="username taken"))
+                return render_template('login_signup.html', error={"type": "signup", "msg": "username taken"})
+                # return redirect(url_for("create_new", error={"type": "signup", "msg": "username taken"}))
             new_user = User(username=data["username"], password=data['password'])
             db.session.add(new_user)
             db.session.commit()
@@ -52,7 +56,8 @@ def create_new():
             print(data["username"])
             user = User.query.filter_by(username=data["username"]).first()
             if user is None:
-                return redirect(url_for("create_new", error="invalid user"))
+                return render_template('login_signup.html', error={"type": "signin", "msg": "invalid user"})
+                # return redirect(url_for("create_new", error={"type": "signin", "msg": "invalid user"}))
             print(str(user.password))
             print(type(data["password"]))
             if user and user.password == data["password"]:
@@ -67,5 +72,6 @@ def create_new():
                 set_refresh_cookies(resp, access_token)
                 return resp
             else:
-                return redirect(url_for("create_new", error="invalid login supplied"))
+                return render_template('login_signup.html', error={"type": "signin", "msg": "invalid login supplied"})
+                # return redirect(url_for("create_new", error={"type": "signin", "msg": "invalid login supplied"}))
         return f'{data}'
